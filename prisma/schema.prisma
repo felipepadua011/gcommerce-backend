@@ -12,3 +12,12 @@ model Teste {
   id             Int      @default(autoincrement()) @id
 }
 
+
+model Usuario {
+  id            Int      @default(autoincrement()) @id @unique
+  username      String   @unique
+  nome          String
+  email         String   @unique
+  senha         String
+  created_at    DateTime @default(now())  
+}
