@@ -9,7 +9,6 @@ export class ProdutoController {
   constructor(private readonly produtoService: ProdutoService) {}
 
   @Post()
-  @UseGuards(AuthGuard('jwt'))
   create(@Body() createProdutoDto: CreateProdutoDto) {
     return this.produtoService.createPrisma(createProdutoDto);
   }
@@ -25,13 +24,11 @@ export class ProdutoController {
   }
 
   @Patch(':id')
-  @UseGuards(AuthGuard('jwt'))
   update(@Param('id') id: string, @Body() updateProdutoDto: UpdateProdutoDto) {
     return this.produtoService.updatePrisma(+id, updateProdutoDto);
   }
 
   @Delete(':id')
-  @UseGuards(AuthGuard('jwt'))
   remove(@Param('id') id: string) {
     return this.produtoService.removePrisma(+id);
   }

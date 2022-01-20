@@ -3,9 +3,6 @@ import { PrismaClient } from '@prisma/client';
 
 @Injectable()
 export class PrismaService extends PrismaClient implements OnModuleInit {
-  Categoria: any;
-  Categoriasemtweets: any;
-  Tweetfavorito: any;
 
   async onModuleInit() {
     await this.$connect();
