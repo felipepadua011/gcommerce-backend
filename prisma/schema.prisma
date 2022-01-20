@@ -9,7 +9,7 @@ datasource db {
 }
 
 model Produto {
-  id                    Int      @default(autoincrement()) @id
+  id                    Int      @default(autoincrement()) @id @unique
   codigo                Int
   nome                  String
   descricao             String
