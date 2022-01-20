@@ -8,8 +8,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Teste {
-  id             Int      @default(autoincrement()) @id
+model Produto {
+  id                    Int      @default(autoincrement()) @id
+  codigo                Int
+  nome                  String
+  descricao             String
+  categoria             String
+  precooriginal         Float
+  porcentagemdesconto   Int
+  precodesconto         Float
 }
 
 
