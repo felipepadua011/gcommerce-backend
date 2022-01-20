@@ -9,7 +9,7 @@ datasource db {
 }
 
 model Produto {
-  id                    Int      @default(autoincrement()) @id
+  id                    Int      @default(autoincrement()) @id @unique
   codigo                Int
   nome                  String
   descricao             String
@@ -19,3 +19,12 @@ model Produto {
   precodesconto         Float
 }
 
+
+model Usuario {
+  id            Int      @default(autoincrement()) @id @unique
+  username      String   @unique
+  nome          String
+  email         String   @unique
+  senha         String
+  created_at    DateTime @default(now())  
+}
