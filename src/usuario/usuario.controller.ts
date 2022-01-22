@@ -14,7 +14,7 @@ import { UpdateUsuarioDto } from "./dto/update-usuario.dto";
 import { AuthGuard } from "@nestjs/passport";
 import { ApiTags } from "@nestjs/swagger";
 
-@ApiTags('users')
+@ApiTags('Users')
 @Controller("usuario")
 export class UsuarioController {
   constructor(private readonly usuarioService: UsuarioService) {}
