@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsInt, IsString, IsDecimal } from 'class-validator';
+import { IsNotEmpty, IsInt, IsString, IsDecimal, IsBoolean } from 'class-validator';
 
 
 export class CreateProdutoDto {
@@ -30,5 +30,9 @@ export class CreateProdutoDto {
     @IsNotEmpty()
     @IsDecimal()
     precodesconto: number;
+
+    @IsNotEmpty()
+    @IsBoolean()
+    estoque: boolean;
 }
 

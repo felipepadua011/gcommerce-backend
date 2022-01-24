@@ -17,6 +17,7 @@ model Produto {
   precooriginal         Float
   porcentagemdesconto   Int
   precodesconto         Float
+  estoque               Boolean
 }
 
 
