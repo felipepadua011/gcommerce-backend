@@ -1,7 +1,7 @@
 import { Injectable, CanActivate, ExecutionContext } from "@nestjs/common";
 import { Reflector } from "@nestjs/core";
-import { ROLES_KEY } from "./pers.decorador";
-import { Role } from "./role.enum";
+import { ROLES_KEY } from "../decorators/roles.decorador";
+import { Role } from "../models/role.enum";
 
 @Injectable()
 export class RolesGuard implements CanActivate {
@@ -16,6 +16,7 @@ export class RolesGuard implements CanActivate {
       return true;
     }
     const { user } = context.switchToHttp().getRequest();
-    return requiredRoles.some((role) => user.roles?.includes(role));
-  }
+    console.log(user);
+    return requiredRoles.some((role) => user.isAdmin.includes(role));
+  } //verificar funcao acima para retornar tipo da reposta (boolean)....
 }

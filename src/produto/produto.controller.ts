@@ -12,8 +12,9 @@ import { ProdutoService } from "./produto.service";
 import { CreateProdutoDto } from "./dto/create-produto.dto";
 import { UpdateProdutoDto } from "./dto/update-produto.dto";
 import { AuthGuard } from "@nestjs/passport";
-import { Roles } from "src/auth/pers.decorador";
-import { Role } from "src/auth/role.enum";
+import { Roles } from "src/auth/decorators/roles.decorador";
+import { Role } from "src/auth/models/role.enum";
+import { RolesGuard } from "src/auth/guards/roles.guard";
 
 @Controller("produto")
 export class ProdutoController {
@@ -21,8 +22,7 @@ export class ProdutoController {
 
   @Post()
   @UseGuards(AuthGuard("jwt"))
-  @Roles(Role.Admin)
-  @Roles(Role.User)
+  @Roles(Role.User, Role.Admin)
   create(@Body() createProdutoDto: CreateProdutoDto) {
     return this.produtoService.createPrisma(createProdutoDto);
   }
@@ -33,25 +33,22 @@ export class ProdutoController {
   }
 
   @Get(":id")
-  @UseGuards(AuthGuard("jwt"))
-  @Roles(Role.Admin)
-  @Roles(Role.User)
+  @UseGuards(AuthGuard("jwt"), RolesGuard)
+  @Roles(Role.User, Role.Admin)
   findOne(@Param("id") id: string) {
     return this.produtoService.findOnePrisma(+id);
   }
 
   @Patch(":id")
-  @UseGuards(AuthGuard("jwt"))
-  @Roles(Role.Admin)
-  @Roles(Role.User)
+  @UseGuards(AuthGuard("jwt"), RolesGuard)
+  @Roles(Role.User, Role.Admin)
   update(@Param("id") id: string, @Body() updateProdutoDto: UpdateProdutoDto) {
     return this.produtoService.updatePrisma(+id, updateProdutoDto);
   }
 
   @Delete(":id")
-  @UseGuards(AuthGuard("jwt"))
-  @Roles(Role.Admin)
-  @Roles(Role.User)
+  @UseGuards(AuthGuard("jwt"), RolesGuard)
+  @Roles(Role.User, Role.Admin)
   remove(@Param("id") id: string) {
     return this.produtoService.removePrisma(+id);
   }
