@@ -33,4 +33,8 @@ export class CreateUsuarioDto {
     description: `A senha será utilizada para cadastrar um dado do usuário`,
   })
   senha: string;
+
+  @IsNotEmpty()
+  @IsString()
+  isAdmin: string;
 }

@@ -17,14 +17,17 @@ model Produto {
   precooriginal         Float
   porcentagemdesconto   Int
   precodesconto         Float
+  estoque               Boolean
+  created_at            DateTime @default(now())
+  updated_at            DateTime @updatedAt
 }
 
 
 model Usuario {
-  id            Int      @default(autoincrement()) @id @unique
-  username      String   @unique
-  nome          String
-  email         String   @unique
-  senha         String
-  created_at    DateTime @default(now())  
+  id                    Int      @default(autoincrement()) @id @unique
+  nome                  String
+  email                 String   @unique
+  senha                 String
+  isAdmin               String
+  created_at            DateTime @default(now())  
 }

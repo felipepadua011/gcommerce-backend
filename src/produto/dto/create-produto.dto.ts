@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsInt, IsString, IsDecimal } from 'class-validator';
+import { IsNotEmpty, IsInt, IsString, IsDecimal, IsBoolean } from 'class-validator';
 
 
 export class CreateProdutoDto {
@@ -59,5 +59,9 @@ export class CreateProdutoDto {
         description: `O campo precodesconto será utilizado para cadastrar o valor do produto descontado de acordo com o porcentagemdesconto `,
     })
     precodesconto: number;
+
+    @IsNotEmpty()
+    @IsBoolean()
+    estoque: boolean;
 }
 

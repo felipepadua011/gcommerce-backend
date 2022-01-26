@@ -4,9 +4,12 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { UsuarioModule } from "./usuario/usuario.module";
 import { ProdutoModule } from "./produto/produto.module";
+import { AuthModule } from "./auth/auth.module";
+import { APP_GUARD } from "@nestjs/core";
+import { RolesGuard } from "./auth/guards/roles.guard";
 
 @Module({
-  imports: [UsuarioModule, PrismaModule, ProdutoModule],
+  imports: [UsuarioModule, PrismaModule, ProdutoModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
