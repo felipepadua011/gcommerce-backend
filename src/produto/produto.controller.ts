@@ -28,6 +28,8 @@ export class ProdutoController {
   }
 
   @Get()
+  @UseGuards(AuthGuard("jwt"))
+  @Roles(Role.User, Role.Admin)
   findAll() {
     return this.produtoService.findAllPrisma();
   }
