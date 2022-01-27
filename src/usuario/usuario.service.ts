@@ -21,6 +21,7 @@ export class UsuarioService {
     } catch (error) {
       console.log(error);
       throw new HttpException(
+        //colocar validações
         "Verifique os dados e tente novamente.",
         HttpStatus.BAD_REQUEST
       );
