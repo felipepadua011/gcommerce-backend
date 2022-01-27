@@ -6,14 +6,6 @@ export class CreateUsuarioDto {
   @IsString()
   @ApiProperty({
     example: 'Bluemer',
-    description: `O username será utilizado para cadastrar um usuário`,
-  })
-  username: string;
-
-  @IsNotEmpty()
-  @IsString()
-  @ApiProperty({
-    example: 'Bluemer',
     description: `O nome será utilizado para cadastrar um usuário`,
   })
   nome: string;
