@@ -17,7 +17,7 @@ import { Roles } from "src/auth/decorators/roles.decorador";
 import { Role } from "src/auth/models/role.enum";
 import { RolesGuard } from "src/auth/guards/roles.guard";
 
-@ApiTags('Products')
+@ApiTags("Products")
 @Controller("produto")
 export class ProdutoController {
   constructor(private readonly produtoService: ProdutoService) {}
@@ -30,6 +30,8 @@ export class ProdutoController {
   }
 
   @Get()
+  @UseGuards(AuthGuard("jwt"), RolesGuard)
+  @Roles(Role.User, Role.Admin)
   findAll() {
     return this.produtoService.findAllPrisma();
   }
