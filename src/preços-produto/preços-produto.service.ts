@@ -1,17 +1,24 @@
 import { Injectable } from '@nestjs/common';
+import { PreçosProduto } from './entities/preços-produto.entity';
+import { PrismaService } from '../prisma/prisma.service'
 import { CreatePreçosProdutoDto } from './dto/create-preços-produto.dto';
 import { UpdatePreçosProdutoDto } from './dto/update-preços-produto.dto';
-import { PreçosProduto } from './entities/preços-produto.entity';
-import { PrismaService } from "src/prisma/prisma.service";
 
 @Injectable()
 export class PreçosProdutoService {
+  prisma: any;
 
   async createPrisma(createPreçosProdutoDto: CreatePreçosProdutoDto): Promise<PreçosProduto> {
     return await this.prisma.preçosproduto.create({
       data: { ...createPreçosProdutoDto },
-    });
+      });
   }
+  
+  // async createPrisma(createPreçosProdutoDto: CreatePreçosProdutoDto): Promise<PreçosProduto> {
+  //   return await this.prisma.preçosproduto.create({
+  //     data: { ...createPreçosProdutoDto },
+  //   });
+  // }
 
   async findAllPrisma(): Promise<PreçosProduto[]> {
     return await this.prisma.preçosproduto.findMany();
