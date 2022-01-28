@@ -20,11 +20,7 @@ export class UsuarioService {
       return createdUser;
     } catch (error) {
       console.log(error);
-      throw new HttpException(
-        //colocar validações
-        "Verifique os dados e tente novamente.",
-        HttpStatus.BAD_REQUEST
-      );
+      throw new HttpException("Email já em uso.", HttpStatus.BAD_REQUEST);
     }
   }
 

@@ -21,14 +21,14 @@ export class ProdutoController {
   constructor(private readonly produtoService: ProdutoService) {}
 
   @Post()
-  @UseGuards(AuthGuard("jwt"))
+  @UseGuards(AuthGuard("jwt"), RolesGuard)
   @Roles(Role.User, Role.Admin)
   create(@Body() createProdutoDto: CreateProdutoDto) {
     return this.produtoService.createPrisma(createProdutoDto);
   }
 
   @Get()
-  @UseGuards(AuthGuard("jwt"))
+  @UseGuards(AuthGuard("jwt"), RolesGuard)
   @Roles(Role.User, Role.Admin)
   findAll() {
     return this.produtoService.findAllPrisma();
