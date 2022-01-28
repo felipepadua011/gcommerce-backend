@@ -10,7 +10,7 @@ import { RolesGuard } from "./auth/guards/roles.guard";
 import { PreçosProdutoModule } from './preços-produto/preços-produto.module';
 
 @Module({
-  imports: [UsuarioModule, PrismaModule, ProdutoModule, AuthModule, PreçosProdutoModule],
+  imports: [UsuarioModule, PrismaModule, ProdutoModule, AuthModule, ProdutosprecosModule],
   controllers: [AppController],
   providers: [AppService],
 })
