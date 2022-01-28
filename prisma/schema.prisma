@@ -17,7 +17,7 @@ model Produto {
   disponivel    Int
   created_at    DateTime        @default(now())
   updated_at    DateTime        @updatedAt
-  ProdutoPrecos ProdutoPrecos[]
+  ProdutosPrecos ProdutosPrecos[]
 }
 
 model ProdutosPrecos {
