@@ -20,7 +20,7 @@ model Produto {
   ProdutoPrecos ProdutoPrecos[]
 }
 
-model ProdutoPrecos {
+model ProdutosPrecos {
   id               Int      @id @unique @default(autoincrement())
   codigo           Int
   produtoid        Int
