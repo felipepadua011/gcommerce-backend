@@ -5,7 +5,7 @@ export class CreateProdutoDto {
 
     @IsNotEmpty()
     @IsInt()
-    codigo: number;
+    produto: number;
 
     @IsNotEmpty()
     @IsString()
@@ -16,23 +16,16 @@ export class CreateProdutoDto {
     descricao: string;
 
     @IsNotEmpty()
-    @IsString()
-    categoria: string;
+    @IsInt()
+    colecao: number;
 
     @IsNotEmpty()
-    @IsDecimal()
-    precooriginal: number;
+    @IsString()
+    grife: string;
 
     @IsNotEmpty()
     @IsInt()
-    porcentagemdesconto: number;
+    disponivel: number;
 
-    @IsNotEmpty()
-    @IsDecimal()
-    precodesconto: number;
-
-    @IsNotEmpty()
-    @IsBoolean()
-    estoque: boolean;
 }
 
