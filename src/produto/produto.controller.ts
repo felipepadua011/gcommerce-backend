@@ -12,10 +12,12 @@ import { ProdutoService } from "./produto.service";
 import { CreateProdutoDto } from "./dto/create-produto.dto";
 import { UpdateProdutoDto } from "./dto/update-produto.dto";
 import { AuthGuard } from "@nestjs/passport";
+import { ApiTags } from "@nestjs/swagger";
 import { Roles } from "src/auth/decorators/roles.decorador";
 import { Role } from "src/auth/models/role.enum";
 import { RolesGuard } from "src/auth/guards/roles.guard";
 
+@ApiTags("Products")
 @Controller("produto")
 export class ProdutoController {
   constructor(private readonly produtoService: ProdutoService) {}
