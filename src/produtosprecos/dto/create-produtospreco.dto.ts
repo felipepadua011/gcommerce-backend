@@ -1,32 +1,37 @@
-import { IsNotEmpty, IsInt, IsString, IsDecimal, IsBoolean } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsInt,
+  IsString,
+  IsDecimal,
+  IsBoolean,
+} from "class-validator";
 
-export class CreateProdutosprecosDto {
+export class CreateProdutosPrecosDto {
+  @IsNotEmpty()
+  @IsInt()
+  codigo: number;
 
-    @IsNotEmpty()
-    @IsInt()
-    codigo: number;
+  @IsNotEmpty()
+  @IsInt()
+  produtoid: number;
 
-    @IsNotEmpty()
-    @IsInt()
-    produtoid: number;
+  @IsNotEmpty()
+  @IsDecimal()
+  preco1: number;
 
-    @IsNotEmpty()
-    @IsInt()
-    preco1: number;
+  @IsNotEmpty()
+  @IsInt()
+  limitedesconto: number;
 
-    @IsNotEmpty()
-    @IsInt()
-    limitedesconto: number;
+  @IsNotEmpty()
+  @IsInt()
+  promocaodesconto: number;
 
-    @IsNotEmpty()
-    @IsInt()
-    promocaodesconto: number;
+  @IsNotEmpty()
+  @IsDecimal()
+  precodesconto: number;
 
-    @IsNotEmpty()
-    @IsDecimal()
-    precodesconto: number;
-
-    @IsNotEmpty()
-    @IsInt()
-    precoliquido1: number;
+  @IsNotEmpty()
+  @IsInt()
+  precoliquido1: number;
 }
