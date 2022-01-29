@@ -1,37 +1,39 @@
 import { Injectable } from '@nestjs/common';
+import { ProdutoPrecos } from "@prisma/client";
 import { PrismaService } from "src/prisma/prisma.service";
-import { CreateProdutosprecoDto } from './dto/create-produtospreco.dto';
+import { CreateProdutosprecosDto } from './dto/create-produtospreco.dto';
 import { UpdateProdutosprecoDto } from './dto/update-produtospreco.dto';
 
 @Injectable()
 export class ProdutosprecosService {
+  constructor(private prisma: PrismaService) {}
 
-  async createPrisma(createProdutosprecoDto: CreateProdutosprecoDto): Promise<Produtospreco> {
-    return await this.prisma.produtosprecos.create({
-      data: { ...createProdutosprecoDto },
+  async createPrisma(createProdutosprecosDto: CreateProdutosprecosDto): Promise<ProdutoPrecos> {
+    return await this.prisma.produtoPrecos.create({
+      data: { ...createProdutosprecosDto },
       });
   }
 
-  async findAllPrisma(): Promise<Produtospreco[]> {
-    return await this.prisma.produtosprecos.findMany();
+  async findAllPrisma(): Promise<ProdutoPrecos[]> {
+    return await this.prisma.produtoPrecos.findMany();
   }
 
-  async findOnePrisma(id: number): Promise<Produtospreco> {
-    return await this.prisma.produtosprecos.findUnique({ where: { id } });
+  async findOnePrisma(id: number): Promise<ProdutoPrecos> {
+    return await this.prisma.produtoPrecos.findUnique({ where: { id } });
   } 
 
   async updatePrisma(
     id: number,
     _updateProdutosprecoDto: UpdateProdutosprecoDto
-  ): Promise<Produtospreco> {
-    return await this.prisma.produtosprecos.update({
+  ): Promise<ProdutoPrecos> {
+    return await this.prisma.produtoPrecos.update({
       data: { ..._updateProdutosprecoDto },
       where: { id },
     });
   }
 
   async removePrisma(id: number) {
-    return await this.prisma.produtosprecos.delete({ where: { id } });
+    return await this.prisma.produtoprecos.delete({ where: { id } });
   }
 }
 

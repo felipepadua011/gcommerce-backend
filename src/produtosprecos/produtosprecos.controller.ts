@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { ProdutosprecosService } from './produtosprecos.service';
-import { CreateProdutosprecoDto } from './dto/create-produtospreco.dto';
+import { CreateProdutosprecosDto } from './dto/create-produtospreco.dto';
 import { UpdateProdutosprecoDto } from './dto/update-produtospreco.dto';
 
 @Controller('produtosprecos')
@@ -8,7 +8,7 @@ export class ProdutosprecosController {
   constructor(private readonly produtosprecosService: ProdutosprecosService) {}
 
   @Post()
-  create(@Body() createProdutosprecoDto: CreateProdutosprecoDto) {
+  create(@Body() createProdutosprecoDto: CreateProdutosprecosDto) {
     return this.produtosprecosService.createPrisma(createProdutosprecoDto);
   }
 
