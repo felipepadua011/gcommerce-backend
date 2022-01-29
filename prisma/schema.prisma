@@ -8,19 +8,19 @@ datasource db {
 }
 
 model Produto {
-  id            Int             @id @unique @default(autoincrement())
-  produto       Float
-  nome          String
-  descricao     String
-  colecao       Int
-  grife         String
-  disponivel    Int
-  created_at    DateTime        @default(now())
-  updated_at    DateTime        @updatedAt
-  ProdutosPrecos ProdutosPrecos[]
+  id                Int             @id @unique @default(autoincrement())
+  produto           Float
+  nome              String
+  descricao         String
+  colecao           Int
+  grife             String
+  disponivel        Int
+  created_at        DateTime        @default(now())
+  updated_at        DateTime        @updatedAt
+  Produtosprecos    Produtosprecos[]
 }
 
-model ProdutosPrecos {
+model Produtosprecos {
   id               Int      @id @unique @default(autoincrement())
   codigo           Int
   produtoid        Int

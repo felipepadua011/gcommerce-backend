@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsInt, IsString, IsDecimal, IsBoolean } from 'class-validator';
 
-export class CreateProdutosprecoDto {
+export class CreateProdutosprecosDto {
 
     @IsNotEmpty()
     @IsInt()
