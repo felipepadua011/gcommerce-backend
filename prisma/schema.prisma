@@ -38,6 +38,6 @@ model Usuario {
   nome       String
   email      String   @unique
   senha      String
-  isAdmin    String
+  isAdmin    Boolean
   created_at DateTime @default(now())
 }

@@ -10,7 +10,7 @@ async function main() {
       nome: "AdminSeed",
       senha: "$2b$10$3TfMrWr6KdjDju0mk1bDpOaz3wd/EVt0.RnvavFqSfYA9.K9Xg29a",
       //senha: "admin"
-      isAdmin: "admin",
+      isAdmin: true,
     },
   });
 
@@ -22,7 +22,7 @@ async function main() {
       nome: "UserSeed",
       senha: "$2b$10$mSs7Yq/oaXzRnXd5PCvtS.FH2LSIjajRSHHfqN4h8uoFHcrrThVxC",
       //senha: "user"
-      isAdmin: "user",
+      isAdmin: false,
     },
   });
   console.log({ adminSeed });

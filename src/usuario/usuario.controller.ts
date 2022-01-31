@@ -17,12 +17,23 @@ import { AuthGuard } from "@nestjs/passport";
 import { ApiTags } from "@nestjs/swagger";
 import { Roles } from "src/auth/decorators/roles.decorador";
 import { Role } from "src/auth/models/role.enum";
+import { CaslAbilityFactory } from "src/casl/casl-ability.factory";
 
-@ApiTags('Users')
+@ApiTags("Users")
 @Controller("usuario")
 export class UsuarioController {
-  constructor(private readonly usuarioService: UsuarioService) {}
+  constructor(
+    private readonly usuarioService: UsuarioService,
+    private caslAbilityFactory: CaslAbilityFactory
+  ) {}
 
+   const user = new User();
+user.isAdmin = false;
+
+const ability = this.caslAbilityFactory.createForUser(user);
+ability.can(Action.Read, Article); // true
+ability.can(Action.Delete, Article); // false
+ability.can(Action.Create, Article); // false
   @Post()
   @Roles(Role.Admin)
   @UseGuards(AuthGuard("jwt"), RolesGuard)
