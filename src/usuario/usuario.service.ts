@@ -12,7 +12,7 @@ export class UsuarioService {
   constructor(private prisma: PrismaService) {}
   roles: Role[];
 
-  async create(data: Prisma.UsuarioCreateInput): Promise<Usuario> {
+  async create(data: Prisma.UsuarioUncheckedCreateInput): Promise<Usuario> {
     data.senha = await bcrypt.hash(data.senha, 10);
     try {
       const createdUser = await this.prisma.usuario.create({ data });

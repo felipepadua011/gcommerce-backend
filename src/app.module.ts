@@ -5,13 +5,18 @@ import { AppService } from "./app.service";
 import { UsuarioModule } from "./usuario/usuario.module";
 import { ProdutoModule } from "./produto/produto.module";
 import { AuthModule } from "./auth/auth.module";
-import { APP_GUARD } from "@nestjs/core";
-import { RolesGuard } from "./auth/guards/roles.guard";
-import { ProdutosprecosModule } from './produtosprecos/produtosprecos.module';
-import { CaslModule } from './casl/casl.module';
+import { ProdutosprecosModule } from "./produtosprecos/produtosprecos.module";
+import { RoleModule } from './role/role.module';
 
 @Module({
-  imports: [UsuarioModule, PrismaModule, ProdutoModule, AuthModule, ProdutosprecosModule, CaslModule],
+  imports: [
+    UsuarioModule,
+    PrismaModule,
+    ProdutoModule,
+    AuthModule,
+    ProdutosprecosModule,
+    RoleModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
