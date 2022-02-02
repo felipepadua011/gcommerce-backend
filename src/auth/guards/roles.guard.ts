@@ -17,6 +17,12 @@ export class RolesGuard implements CanActivate {
     }
     const { user } = context.switchToHttp().getRequest();
     console.log(user);
-    return requiredRoles.some((role) => user.isAdmin.includes(role));
-  } //verificar funcao acima para retornar tipo da reposta (boolean)....
+    return requiredRoles.some((role) => {
+      if (user.isAdmin == 1) {
+        return Role.User;
+      } else if (user.isAdmin == 2) {
+        return Role.Admin;
+      }
+    });
+  }
 }
