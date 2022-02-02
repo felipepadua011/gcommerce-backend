@@ -16,7 +16,6 @@ export class CreateProdutosPrecosDto {
   produtoid: number;
 
   @IsNotEmpty()
-  @IsDecimal()
   preco1: number;
 
   @IsNotEmpty()
@@ -28,7 +27,6 @@ export class CreateProdutosPrecosDto {
   promocaodesconto: number;
 
   @IsNotEmpty()
-  @IsDecimal()
   precodesconto: number;
 
   @IsNotEmpty()
