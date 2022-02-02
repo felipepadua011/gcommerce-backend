@@ -8,7 +8,6 @@ import {
   Param,
   Delete,
   UseGuards,
-  SetMetadata,
 } from "@nestjs/common";
 import { UsuarioService } from "./usuario.service";
 import { CreateUsuarioDto } from "./dto/create-usuario.dto";
@@ -18,14 +17,14 @@ import { ApiTags } from "@nestjs/swagger";
 import { Roles } from "src/auth/decorators/roles.decorador";
 import { Role } from "src/auth/models/role.enum";
 
-@ApiTags('Users')
+@ApiTags("Users")
 @Controller("usuario")
 export class UsuarioController {
   constructor(private readonly usuarioService: UsuarioService) {}
 
   @Post()
-  @Roles(Role.Admin)
   @UseGuards(AuthGuard("jwt"), RolesGuard)
+  @Roles(Role.Admin)
   create(@Body() createUsuarioDto: CreateUsuarioDto) {
     return this.usuarioService.create(createUsuarioDto);
   }
@@ -45,15 +44,15 @@ export class UsuarioController {
   }
 
   @Patch(":id")
-  @Roles(Role.Admin)
   @UseGuards(AuthGuard("jwt"), RolesGuard)
+  @Roles(Role.Admin)
   update(@Param("id") id: string, @Body() updateUsuarioDto: UpdateUsuarioDto) {
     return this.usuarioService.update(+id, updateUsuarioDto);
   }
 
   @Delete(":id")
-  @Roles(Role.Admin)
   @UseGuards(AuthGuard("jwt"), RolesGuard)
+  @Roles(Role.Admin)
   remove(@Param("id") id: string) {
     return this.usuarioService.remove(+id);
   }
