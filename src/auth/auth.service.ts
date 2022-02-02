@@ -18,6 +18,8 @@ export class AuthService {
 
     const token = this._createToken(user);
     return {
+      id: user.id,
+      tipo: user.isAdmin,
       email: user.email,
       ...token,
     };
