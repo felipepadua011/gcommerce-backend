@@ -4,7 +4,7 @@ import { ExtractJwt, Strategy } from "passport-jwt";
 
 export interface JwtPayload {
   email: string;
-  isAdmin: string;
+  isAdmin: number;
 }
 
 @Injectable()

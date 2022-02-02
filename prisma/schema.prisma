@@ -34,11 +34,20 @@ model ProdutosPrecos {
   updated_at        DateTime @updatedAt
 }
 
+model Role {
+  id         Int     @default(autoincrement()) @id @unique 
+  role       Boolean  
+  usuario    Usuario[]
+}
+
 model Usuario {
   id         Int      @id @unique @default(autoincrement())
   nome       String
   email      String   @unique
   senha      String
-  isAdmin    String
+  role       Role      @relation(fields: [isAdmin], references: [id])
+  isAdmin    Int
   created_at DateTime @default(now())
 }
+
+
