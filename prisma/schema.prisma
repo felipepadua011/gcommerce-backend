@@ -23,12 +23,12 @@ model Produto {
 model ProdutosPrecos {
   id                Int      @id @unique @default(autoincrement())
   codigo            Int
+  produto           String
   produtoid         Int
   Produto           Produto? @relation(fields: [produtoid], references: [id])
   preco1            Float
   limitedesconto    Int
   promocaodesconto  Int
-  precodesconto     Float
   precoliquido1     Float
   created_at        DateTime @default(now())
   updated_at        DateTime @updatedAt

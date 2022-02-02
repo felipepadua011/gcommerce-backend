@@ -12,6 +12,10 @@ export class CreateProdutosPrecosDto {
   codigo: number;
 
   @IsNotEmpty()
+  @IsString()
+  produto: string;
+
+  @IsNotEmpty()
   @IsInt()
   produtoid: number;
 
@@ -25,9 +29,6 @@ export class CreateProdutosPrecosDto {
   @IsNotEmpty()
   @IsInt()
   promocaodesconto: number;
-
-  @IsNotEmpty()
-  precodesconto: number;
 
   @IsNotEmpty()
   @IsInt()
