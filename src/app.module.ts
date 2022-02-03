@@ -7,6 +7,7 @@ import { ProdutoModule } from "./produto/produto.module";
 import { AuthModule } from "./auth/auth.module";
 import { ProdutosprecosModule } from "./produtosprecos/produtosprecos.module";
 import { RoleModule } from './role/role.module';
+import { MassaModule } from './massa/massa.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { RoleModule } from './role/role.module';
     AuthModule,
     ProdutosprecosModule,
     RoleModule,
+    MassaModule,
   ],
   controllers: [AppController],
   providers: [AppService],
