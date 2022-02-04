@@ -7,12 +7,16 @@ import {
   Param,
   Delete,
   UseGuards,
+  UseInterceptors,
+  UploadedFiles,
 } from "@nestjs/common";
 import { ProdutoService } from "./produto.service";
 import { CreateProdutoDto } from "./dto/create-produto.dto";
 import { UpdateProdutoDto } from "./dto/update-produto.dto";
 import { AuthGuard } from "@nestjs/passport";
 import { ApiTags } from "@nestjs/swagger";
+import { Express } from "express";
+import { AnyFilesInterceptor } from "@nestjs/platform-express";
 
 @ApiTags("Products")
 @Controller("produto")
@@ -41,6 +45,12 @@ export class ProdutoController {
   @UseGuards(AuthGuard("jwt"))
   update(@Param("id") id: string, @Body() updateProdutoDto: UpdateProdutoDto) {
     return this.produtoService.updatePrisma(+id, updateProdutoDto);
+  }
+
+  @Post("upload")
+  @UseInterceptors(AnyFilesInterceptor())
+  uploadFile(@UploadedFiles() files: Array<Express.Multer.File>) {
+    console.log(files);
   }
 
   @Delete(":id")
