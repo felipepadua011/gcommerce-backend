@@ -22,8 +22,8 @@ export class AuthService {
       ...token,
     };
   }
-  private _createToken({ email, isAdmin }: Usuario): any {
-    const user: JwtPayload = { email, isAdmin };
+  private _createToken({ id, nome, email, isAdmin }: Usuario): any {
+    const user: JwtPayload = { id, nome, email, isAdmin };
     const acessToken = this.jwtService.sign(user);
     return {
       expiresIn: process.env.EXPIRESIN,
