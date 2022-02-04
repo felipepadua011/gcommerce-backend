@@ -9,7 +9,7 @@ datasource db {
 
 model Produto {
   id                Int             @id @unique @default(autoincrement())
-  produto           String
+  produto1          String          @unique
   nome              String
   descricao         String
   colecao           String
@@ -23,9 +23,8 @@ model Produto {
 model ProdutosPrecos {
   id                Int      @id @unique @default(autoincrement())
   codigo            Int
-  produto           String
-  produtoid         Int
-  Produto           Produto? @relation(fields: [produtoid], references: [id])
+  produtoid         String
+  Produto           Produto? @relation(fields: [produtoid], references: [produto1])
   preco1            Float
   limitedesconto    Int
   promocaodesconto  Int
@@ -49,5 +48,3 @@ model Usuario {
   isAdmin    Int
   created_at DateTime @default(now())
 }
-
-

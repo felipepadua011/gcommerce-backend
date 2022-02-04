@@ -12,12 +12,7 @@ export class CreateProdutosPrecosDto {
   codigo: number;
 
   @IsNotEmpty()
-  @IsString()
-  produto: string;
-
-  @IsNotEmpty()
-  @IsInt()
-  produtoid: number;
+  produtoid: string;
 
   @IsNotEmpty()
   preco1: number;
