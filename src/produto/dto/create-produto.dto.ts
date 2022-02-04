@@ -14,7 +14,7 @@ export class CreateProdutoDto {
     example: "123456",
     description: `O campo produto será utilizado para cadastrar um dado único para o produto`,
   })
-  produto: string;
+  produto1: string;
 
   @IsNotEmpty()
   @IsString()
