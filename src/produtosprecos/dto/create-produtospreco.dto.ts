@@ -26,6 +26,5 @@ export class CreateProdutosPrecosDto {
   promocaodesconto: number;
 
   @IsNotEmpty()
-  @IsInt()
   precoliquido1: number;
 }

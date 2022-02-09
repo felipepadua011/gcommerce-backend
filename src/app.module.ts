@@ -8,6 +8,8 @@ import { AuthModule } from "./auth/auth.module";
 import { ProdutosprecosModule } from "./produtosprecos/produtosprecos.module";
 import { RoleModule } from './role/role.module';
 import { MassaModule } from './massa/massa.module';
+import { LogsModule } from './logs/logs.module';
+import { CamposModule } from './campos/campos.module';
 
 @Module({
   imports: [
@@ -18,6 +20,8 @@ import { MassaModule } from './massa/massa.module';
     ProdutosprecosModule,
     RoleModule,
     MassaModule,
+    LogsModule,
+    CamposModule,
   ],
   controllers: [AppController],
   providers: [AppService],
