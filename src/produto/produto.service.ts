@@ -35,4 +35,11 @@ export class ProdutoService {
   async removePrisma(id: number) {
     return await this.prisma.produto.delete({ where: { id } });
   }
+
+  // async uploadFilePrisma(produto1: string) {
+  //   return await this.prisma.produto.updateMany({
+  //     where: { produto1: produto1 },
+  //     data: { file },
+  //   });
+  // }
 }
