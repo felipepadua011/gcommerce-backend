@@ -52,9 +52,11 @@ export class ProdutoController {
   @UseInterceptors(FileInterceptor("upload"))
   uploadFile(@UploadedFile() file: Express.Multer.File) {
     const workSheetsFromFile = xlsx.parse(file.path);
-    console.log(workSheetsFromFile[0]);
     console.log(file);
-    // return this.produtoService.uploadFilePrisma(workSheetsFromFile);
+    console.log(workSheetsFromFile)
+    const dados = workSheetsFromFile[0].data
+    console.log(dados)
+    return dados;
   }
 
   @Delete(":id")

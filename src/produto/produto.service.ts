@@ -1,5 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { Produto } from "@prisma/client";
+import readXlsxFile from "read-excel-file";
 import { PrismaService } from "src/prisma/prisma.service";
 import { CreateProdutoDto } from "./dto/create-produto.dto";
 import { UpdateProdutoDto } from "./dto/update-produto.dto";
@@ -36,10 +37,12 @@ export class ProdutoService {
     return await this.prisma.produto.delete({ where: { id } });
   }
 
-  // async uploadFilePrisma(produto1: string) {
-  //   return await this.prisma.produto.updateMany({
-  //     where: { produto1: produto1 },
-  //     data: { file },
-  //   });
-  // }
+  async uploadFilePrisma(dados:any) {
+    dados.forEach(() => {
+      return this.prisma.produto.update({
+
+      data: { ...dados },
+      where: { produto1: dados.produto1 },
+    });})
+  }
 }
