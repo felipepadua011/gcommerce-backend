@@ -43,20 +43,20 @@ export class ProdutoController {
   }
 
   @Patch(":id")
-  @UseGuards(AuthGuard("jwt"))
+  // @UseGuards(AuthGuard("jwt"))
   update(@Param("id") id: string, @Body() updateProdutoDto: UpdateProdutoDto) {
     return this.produtoService.updatePrisma(+id, updateProdutoDto);
   }
 
   @Post("upload")
   @UseInterceptors(FileInterceptor("upload"))
-  uploadFile(@UploadedFile() file: Express.Multer.File) {
+  uploadFile(@UploadedFile() file: Express.Multer.File): Promise<void> {
     const workSheetsFromFile = xlsx.parse(file.path);
-    console.log(file);
-    console.log(workSheetsFromFile)
+    // console.log(file);
+    // console.log(workSheetsFromFile)
     const dados = workSheetsFromFile[0].data
-    console.log(dados)
-    return dados;
+    // console.log(dados)
+    return this.produtoService.uploadFilePrisma(dados);
   }
 
   @Delete(":id")

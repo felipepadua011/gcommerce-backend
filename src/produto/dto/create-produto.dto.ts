@@ -3,9 +3,7 @@ import {
   IsNotEmpty,
   IsInt,
   IsString,
-  IsDecimal,
-  IsBoolean,
-} from "class-validator";
+  } from "class-validator";
 
 export class CreateProdutoDto {
   @IsNotEmpty()
