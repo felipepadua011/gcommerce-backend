@@ -8,7 +8,7 @@ import {
   Delete,
   UseGuards,
   UseInterceptors,
-  UploadedFiles,
+  UploadedFile,
 } from "@nestjs/common";
 import { ProdutoService } from "./produto.service";
 import { CreateProdutoDto } from "./dto/create-produto.dto";
@@ -16,7 +16,8 @@ import { UpdateProdutoDto } from "./dto/update-produto.dto";
 import { AuthGuard } from "@nestjs/passport";
 import { ApiTags } from "@nestjs/swagger";
 import { Express } from "express";
-import { AnyFilesInterceptor } from "@nestjs/platform-express";
+import { FileInterceptor } from "@nestjs/platform-express";
+import xlsx from "node-xlsx";
 
 @ApiTags("Products")
 @Controller("produto")
@@ -42,15 +43,20 @@ export class ProdutoController {
   }
 
   @Patch(":id")
-  @UseGuards(AuthGuard("jwt"))
+  // @UseGuards(AuthGuard("jwt"))
   update(@Param("id") id: string, @Body() updateProdutoDto: UpdateProdutoDto) {
     return this.produtoService.updatePrisma(+id, updateProdutoDto);
   }
 
   @Post("upload")
-  @UseInterceptors(AnyFilesInterceptor())
-  uploadFile(@UploadedFiles() files: Array<Express.Multer.File>) {
-    console.log(files);
+  @UseInterceptors(FileInterceptor("upload"))
+  uploadFile(@UploadedFile() file: Express.Multer.File): Promise<void> {
+    const workSheetsFromFile = xlsx.parse(file.path);
+    // console.log(file);
+    // console.log(workSheetsFromFile)
+    const dados = workSheetsFromFile[0].data
+    // console.log(dados)
+    return this.produtoService.uploadFilePrisma(dados);
   }
 
   @Delete(":id")

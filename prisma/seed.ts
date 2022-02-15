@@ -41,6 +41,49 @@ async function main() {
       isAdmin: 1,
     },
   });
+
+  const produto1Seed = await prisma.produto.upsert({
+    where: { id: 1 },
+    update: {},
+    create: {
+      produto1: "29.14.1159",
+      nome: "hulk",
+      descricao: "branca, regata, com desenho.",
+      colecao: "verao",
+      grife: "bobo",
+      disponivel: 1,
+    },
+  });
+
+  const produto2Seed = await prisma.produto.upsert({
+    where: { id: 2 },
+    update: {},
+    create: {
+      produto1: "29.14.1161",
+      nome: "thor",
+      descricao: "preta, manga curta, com desenho.",
+      colecao: "primavera",
+      grife: "nike",
+      disponivel: 1,
+    },
+  });
+
+  const produto3Seed = await prisma.produto.upsert({
+    where: { id: 3 },
+    update: {},
+    create: {
+      produto1: "29.14.1160",
+      nome: "hulk",
+      descricao: "verde, manga comprida, sem desenho.",
+      colecao: "inverno",
+      grife: "lacoste",
+      disponivel: 0,
+    },
+  });
+
+  console.log({ produto1Seed });
+  console.log({ produto2Seed });
+  console.log({ produto3Seed });
   console.log({ adminSeed });
   console.log({ userSeed });
   console.log({ roleAdminSeed });
