@@ -47,11 +47,11 @@ async function main() {
     update: {},
     create: {
       produto1: "29.14.1159",
-      nome: "hulk",
+      nome: "produto 1",
       descricao: "branca, regata, com desenho.",
       colecao: "verao",
       grife: "bobo",
-      disponivel: 1,
+      disponivel: 0,
     },
   });
 
@@ -59,12 +59,12 @@ async function main() {
     where: { id: 2 },
     update: {},
     create: {
-      produto1: "29.14.1161",
-      nome: "thor",
+      produto1: "29.14.1160",
+      nome: "produto 2",
       descricao: "preta, manga curta, com desenho.",
       colecao: "primavera",
       grife: "nike",
-      disponivel: 1,
+      disponivel: 0,
     },
   });
 
@@ -72,8 +72,112 @@ async function main() {
     where: { id: 3 },
     update: {},
     create: {
-      produto1: "29.14.1160",
-      nome: "hulk",
+      produto1: "29.14.1161",
+      nome: "Produto 3",
+      descricao: "verde, manga comprida, sem desenho.",
+      colecao: "inverno",
+      grife: "lacoste",
+      disponivel: 0,
+    },
+  });
+
+const produto4Seed = await prisma.produto.upsert({
+    where: { id: 4 },
+    update: {},
+    create: {
+      produto1: "29.14.1162",
+      nome: "Produto 4",
+      descricao: "verde, manga curta",
+      colecao: "inverno",
+      grife: "lacoste",
+      disponivel: 0,
+    },
+  });
+
+const produto5Seed = await prisma.produto.upsert({
+    where: { id: 5 },
+    update: {},
+    create: {
+      produto1: "29.14.1163",
+      nome: "Produto 5",
+      descricao: "verde, manga comprida, sem desenho.",
+      colecao: "inverno",
+      grife: "lacoste",
+      disponivel: 0,
+    },
+  });
+
+  const produto6Seed = await prisma.produto.upsert({
+    where: { id: 6 },
+    update: {},
+    create: {
+      produto1: "29.14.1164",
+      nome: "´Produto 6",
+      descricao: "verde, manga comprida, sem desenho.",
+      colecao: "inverno",
+      grife: "lacoste",
+      disponivel: 0,
+    },
+  });
+
+  const produto7Seed = await prisma.produto.upsert({
+    where: { id: 7 },
+    update: {},
+    create: {
+      produto1: "29.14.1165",
+      nome: "Produto 7",
+      descricao: "verde, manga comprida, sem desenho.",
+      colecao: "inverno",
+      grife: "lacoste",
+      disponivel: 0,
+    },
+  });
+
+  const produto8Seed = await prisma.produto.upsert({
+    where: { id: 8 },
+    update: {},
+    create: {
+      produto1: "29.14.1166",
+      nome: "Produto 8",
+      descricao: "verde, manga comprida, sem desenho.",
+      colecao: "inverno",
+      grife: "lacoste",
+      disponivel: 0,
+    },
+  });
+
+  const produto9Seed = await prisma.produto.upsert({
+    where: { id: 9 },
+    update: {},
+    create: {
+      produto1: "29.14.1167",
+      nome: "Produto 9",
+      descricao: "verde, manga comprida, sem desenho.",
+      colecao: "inverno",
+      grife: "lacoste",
+      disponivel: 0,
+    },
+  });
+
+  const produto10Seed = await prisma.produto.upsert({
+    where: { id: 10 },
+    update: {},
+    create: {
+      produto1: "29.14.1168",
+      nome: "Produto 10",
+      descricao: "verde, manga comprida, sem desenho.",
+      colecao: "inverno",
+      grife: "lacoste",
+      disponivel: 0,
+    },
+  });
+
+  const produto11Seed = await prisma.produto.upsert({
+    where: { id: 11 },
+    update: {},
+    create: {
+      produto1: "29.14.1169",
+      nome: "Produto nao alterado em massa",
       descricao: "verde, manga comprida, sem desenho.",
       colecao: "inverno",
       grife: "lacoste",
@@ -84,6 +188,14 @@ async function main() {
   console.log({ produto1Seed });
   console.log({ produto2Seed });
   console.log({ produto3Seed });
+  console.log({ produto4Seed });
+  console.log({ produto5Seed });
+  console.log({ produto6Seed });
+  console.log({ produto7Seed });
+  console.log({ produto8Seed });
+  console.log({ produto9Seed });
+  console.log({ produto10Seed });
+  console.log({ produto11Seed });
   console.log({ adminSeed });
   console.log({ userSeed });
   console.log({ roleAdminSeed });

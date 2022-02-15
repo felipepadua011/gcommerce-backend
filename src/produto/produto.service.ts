@@ -37,22 +37,11 @@ export class ProdutoService {
     return await this.prisma.produto.delete({ where: { id } });
   }
 
-  // async uploadFilePrisma(dados:any) {
-  //   for (let i in dados){
-  //     for (let i of dados){
-  //     return this.prisma.produto.update({
-  //     data: { ...dados },
-  //     where: { produto1: dados[0][0] },
-  //   });}}
-  // }
-
 async uploadFilePrisma(dados:any) {
   if (!dados) {
     console.log("vazio")
   }
-  console.log(dados)
   const dado = dados.shift()
-  console.log(dados)
   dados.map(async(dados) => {(
    await this.prisma.produto.update({
        data: { produto1: dados[0],
