@@ -49,7 +49,7 @@ export class ProdutoController {
   }
 
   @Post("upload")
-  // @UseGuards(AuthGuard("jwt"))
+  @UseGuards(AuthGuard("jwt"))
   @UseInterceptors(FileInterceptor("upload"))
   uploadFile(@UploadedFile() file: Express.Multer.File): Promise<void> {
     const workSheetsFromFile = xlsx.parse(file.path);
