@@ -558,7 +558,7 @@ Caso fique assim, tudo pronto, seu swagger está rodando perfeitamente!!
 
 ### Bruno Daniel ->  Entre em contato por: 
 
-**`Email:`** x
+**`Email:`** bruno.daniel@outlook.com
 
 ### 
 
