@@ -37,4 +37,22 @@ export class ProdutosprecosService {
   async removePrisma(id: number) {
     return await this.prisma.produtosPrecos.delete({ where: { id } });
   }
+
+  async uploadFilePrisma(dados: any) {
+    if (!dados) {
+      console.log("vazio")
+    }
+    const dado = dados.shift()
+    dados.map(async(dados) => {(
+      await this.prisma.produtosPrecos.update({ 
+        where: {produtoid: dados[0] },
+        data: { 
+          produtoid: dados[0],
+          promocaodesconto: dados[1],
+          precoliquido1: dados[2],
+          preco1: dados[3] },
+      
+    })
+    )})
+  }
 }
