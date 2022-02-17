@@ -18,21 +18,19 @@ model Produto {
   created_at     DateTime         @default(now())
   updated_at     DateTime         @updatedAt
   ProdutosPrecos ProdutosPrecos[]
-  Logs           Logs[]
 }
 
 model ProdutosPrecos {
   id               Int      @id @unique @default(autoincrement())
-  codigo           Int      @unique
-  produtoid        String
+  codigo           Int     
+  produtoid        String   @unique
   Produto          Produto? @relation(fields: [produtoid], references: [produto1])
-  preco1           Float    @unique
+  preco1           Float    
   limitedesconto   Int
   promocaodesconto Int
   precoliquido1    Float
   created_at       DateTime @default(now())
   updated_at       DateTime @updatedAt
-  Logs             Logs[]
 }
 
 model Role {
@@ -49,28 +47,5 @@ model Usuario {
   role       Role     @relation(fields: [isAdmin], references: [id])
   isAdmin    Int
   created_at DateTime @default(now())
-  Logs       Logs[]
 }
 
-model CamposAlterados {
-  id         Int      @id @unique @default(autoincrement())
-  campo      String
-  created_at DateTime @default(now())
-  Logs       Logs[]
-}
-
-model Logs {
-  id              Int              @id @unique @default(autoincrement())
-  Usuario         Usuario?         @relation(fields: [usuarioid], references: [id])  
-  usuarioid       Int
-  ProdutosPrecos  ProdutosPrecos?  @relation(fields: [codigoprecos], references: [codigo])
-  codigoprecos    Int
-  Produto         Produto?         @relation(fields: [produtoid], references: [produto1])
-  produtoid       String
-  CamposAlterados CamposAlterados? @relation(fields: [campoalterado], references: [id])
-  campoalterado   Int
-  valororiginal   Float
-  valornovo       Float
-  created_at      DateTime         @default(now())
-  updated_at      DateTime         @updatedAt
-}

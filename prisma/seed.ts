@@ -185,6 +185,140 @@ const produto5Seed = await prisma.produto.upsert({
     },
   });
 
+  const produtoPreco1Seed = await prisma.produtosPrecos.upsert({
+    where: { id: 1 },
+    update: {},
+    create: {
+      codigo: 13,
+      produtoid: "29.14.1159",
+      promocaodesconto: 10,
+      precoliquido1: 150,
+      preco1: 100,
+      limitedesconto:60,
+    },
+  });
+
+  const produtoPreco2Seed = await prisma.produtosPrecos.upsert({
+    where: { id: 2 },
+    update: {},
+    create: {
+      codigo: 13,
+      produtoid: "29.14.1160",
+      promocaodesconto: 10,
+      precoliquido1: 150,
+      preco1: 100,
+      limitedesconto:60,
+    },
+  });
+
+  const produtoPreco3Seed = await prisma.produtosPrecos.upsert({
+    where: { id: 3 },
+    update: {},
+    create: {
+      codigo: 13,
+      produtoid: "29.14.1161",
+      promocaodesconto: 10,
+      precoliquido1: 150,
+      preco1: 100,
+      limitedesconto:60,    },
+  });
+
+const produtoPreco4Seed = await prisma.produtosPrecos.upsert({
+    where: { id: 4 },
+    update: {},
+    create: {
+      codigo: 13,
+      produtoid: "29.14.1162",
+      promocaodesconto: 10,
+      precoliquido1: 150,
+      preco1: 100,
+      limitedesconto:60,    },
+  });
+
+const produtoPreco5Seed = await prisma.produtosPrecos.upsert({
+    where: { id: 5 },
+    update: {},
+    create: {
+      codigo: 13,
+      produtoid: "29.14.1163",
+      promocaodesconto: 10,
+      precoliquido1: 150,
+      preco1: 100,
+      limitedesconto:60,    },
+  });
+
+  const produtoPreco6Seed = await prisma.produtosPrecos.upsert({
+    where: { id: 6 },
+    update: {},
+    create: {
+      codigo: 13,
+      produtoid: "29.14.1164",
+      promocaodesconto: 10,
+      precoliquido1: 150,
+      preco1: 100,
+      limitedesconto:60,    },
+  });
+
+  const produtoPreco7Seed = await prisma.produtosPrecos.upsert({
+    where: { id: 7 },
+    update: {},
+    create: {
+      codigo: 13,
+      produtoid: "29.14.1165",
+      promocaodesconto: 10,
+      precoliquido1: 150,
+      preco1: 100,
+      limitedesconto:60,    },
+  });
+
+  const produtoPreco8Seed = await prisma.produtosPrecos.upsert({
+    where: { id: 8 },
+    update: {},
+    create: {
+      codigo: 13,
+      produtoid: "29.14.1166",
+      promocaodesconto: 10,
+      precoliquido1: 150,
+      preco1: 100,
+      limitedesconto:60,    },
+  });
+
+  const produtoPreco9Seed = await prisma.produtosPrecos.upsert({
+    where: { id: 9 },
+    update: {},
+    create: {
+      codigo: 13,
+      produtoid: "29.14.1167",
+      promocaodesconto: 10,
+      precoliquido1: 150,
+      preco1: 100,
+      limitedesconto:60,    },
+  });
+
+  const produtoPreco10Seed = await prisma.produtosPrecos.upsert({
+    where: { id: 10 },
+    update: {},
+    create: {
+      codigo: 13,
+      produtoid: "29.14.1168",
+      promocaodesconto: 10,
+      precoliquido1: 150,
+      preco1: 100,
+      limitedesconto:60,    },
+  });
+
+  const produtoPreco11Seed = await prisma.produtosPrecos.upsert({
+    where: { id: 11 },
+    update: {},
+    create: {
+      codigo: 13,
+      produtoid: "29.14.1169",
+      promocaodesconto: 10,
+      precoliquido1: 150,
+      preco1: 100,
+      limitedesconto:60,    },
+  });
+
   console.log({ produto1Seed });
   console.log({ produto2Seed });
   console.log({ produto3Seed });
@@ -196,6 +330,17 @@ const produto5Seed = await prisma.produto.upsert({
   console.log({ produto9Seed });
   console.log({ produto10Seed });
   console.log({ produto11Seed });
+  console.log({ produtoPreco1Seed });
+  console.log({ produtoPreco2Seed });
+  console.log({ produtoPreco3Seed });
+  console.log({ produtoPreco4Seed });  
+  console.log({ produtoPreco5Seed });
+  console.log({ produtoPreco6Seed });
+  console.log({ produtoPreco7Seed });
+  console.log({ produtoPreco8Seed });
+  console.log({ produtoPreco9Seed });
+  console.log({ produtoPreco10Seed });
+  console.log({ produtoPreco11Seed });            
   console.log({ adminSeed });
   console.log({ userSeed });
   console.log({ roleAdminSeed });
