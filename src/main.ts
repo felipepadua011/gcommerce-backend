@@ -2,6 +2,9 @@ import { ValidationPipe } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import { AppModule } from "./app.module";
+import logger from "./logger/logger";
+
+const porta = process.env.PORT || 3000;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -17,7 +20,8 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup("api", app, document);
-
-  await app.listen(process.env.PORT || 3000);
+      
+  await app.listen(porta);
+  logger.info(`Rodando na porta ${porta}`)
 }
 bootstrap();

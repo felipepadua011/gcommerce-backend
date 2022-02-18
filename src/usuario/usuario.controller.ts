@@ -8,6 +8,7 @@ import {
   Param,
   Delete,
   UseGuards,
+  Logger,
 } from "@nestjs/common";
 import { UsuarioService } from "./usuario.service";
 import { CreateUsuarioDto } from "./dto/create-usuario.dto";
@@ -16,10 +17,15 @@ import { AuthGuard } from "@nestjs/passport";
 import { ApiTags } from "@nestjs/swagger";
 import { Roles } from "src/auth/decorators/roles.decorador";
 import { Role } from "src/auth/models/role.enum";
+import logger from "src/logger/logger";
+
+const log = require('../logger/index')
 
 @ApiTags("Users")
 @Controller("usuario")
 export class UsuarioController {
+  private logger = new Logger(UsuarioController.name)
+
   constructor(private readonly usuarioService: UsuarioService) {}
 
   @Post()
@@ -33,7 +39,17 @@ export class UsuarioController {
   @UseGuards(AuthGuard("jwt"), RolesGuard)
   @Roles(Role.Admin)
   findAll() {
-    return this.usuarioService.findAll();
+    try {
+    const result = this.usuarioService.findAll();
+    logger.info("Um evento ocorreu.")
+   log.info("Winston info")
+   log.warn("Winston warn")
+   log.error("Winston error")
+   log.debug("Winston debug")
+    return result;
+  } catch (error) {
+   logger.error(error.message);
+  }
   }
 
   @Get(":id")

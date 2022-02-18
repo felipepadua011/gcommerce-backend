@@ -9,6 +9,7 @@ import {
   UseGuards,
   UseInterceptors,
   UploadedFile,
+  Logger,
 } from "@nestjs/common";
 import { ProdutoService } from "./produto.service";
 import { CreateProdutoDto } from "./dto/create-produto.dto";
@@ -22,6 +23,7 @@ import xlsx from "node-xlsx";
 @ApiTags("Products")
 @Controller("produto")
 export class ProdutoController {
+  private logger = new Logger(ProdutoController.name)
   constructor(private readonly produtoService: ProdutoService) {}
 
   @Post()
@@ -39,7 +41,12 @@ export class ProdutoController {
   @Get(":id")
   @UseGuards(AuthGuard("jwt"))
   findOne(@Param("id") id: string) {
+    try {
     return this.produtoService.findOnePrisma(+id);
+    } catch(error){
+      this.logger.error(error.message)
+      return error.message
+    }
   }
 
   @Patch(":id")

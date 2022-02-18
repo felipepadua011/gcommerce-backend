@@ -1,4 +1,4 @@
-import {Injectable } from "@nestjs/common";
+import {Injectable, Logger } from "@nestjs/common";
 import { Produto } from "@prisma/client";
 import { PrismaService } from "src/prisma/prisma.service";
 import { CreateProdutoDto } from "./dto/create-produto.dto";
@@ -7,12 +7,20 @@ import { UpdateProdutoDto } from "./dto/update-produto.dto";
 
 @Injectable()
 export class ProdutoService {
+private logger = new Logger(ProdutoService.name)
+
   constructor(private prisma: PrismaService) {}
 
   async createPrisma(createProdutoDto: CreateProdutoDto): Promise<Produto> {
-    return await this.prisma.produto.create({
-      data: { ...createProdutoDto },
+    try{
+    const response = await this.prisma.produto.create({
+      data: { ...createProdutoDto }, 
     });
+    this.logger.log(`Produto criado: ${response.nome}`);
+    return response;
+  } catch(error) {
+      this.logger.log(error)
+    }
   }
 
   async findAllPrisma(): Promise<Produto[]> {
