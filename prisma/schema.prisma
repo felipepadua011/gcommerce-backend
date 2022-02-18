@@ -8,35 +8,37 @@ datasource db {
 }
 
 model Produto {
-  id                Int             @id @unique @default(autoincrement())
-  produto1          String          @unique
-  nome              String
-  descricao         String
-  colecao           String
-  grife             String
-  disponivel        Int
-  created_at        DateTime        @default(now())
-  updated_at        DateTime        @updatedAt
-  ProdutosPrecos    ProdutosPrecos[]
+  id             Int              @id @unique @default(autoincrement())
+  produto1       String           @unique
+  nome           String
+  descricao      String
+  colecao        String
+  grife          String
+  disponivel     Int
+  created_at     DateTime         @default(now())
+  updated_at     DateTime         @updatedAt
+  ProdutosPrecos ProdutosPrecos[]
+  Logs           Logs[]
 }
 
 model ProdutosPrecos {
-  id                Int      @id @unique @default(autoincrement())
-  codigo            Int
-  produtoid         String
-  Produto           Produto? @relation(fields: [produtoid], references: [produto1])
-  preco1            Float
-  limitedesconto    Int
-  promocaodesconto  Int
-  precoliquido1     Float
-  created_at        DateTime @default(now())
-  updated_at        DateTime @updatedAt
+  id               Int      @id @unique @default(autoincrement())
+  codigo           Int      @unique
+  produtoid        String
+  Produto          Produto? @relation(fields: [produtoid], references: [produto1])
+  preco1           Float    @unique
+  limitedesconto   Int
+  promocaodesconto Int
+  precoliquido1    Float
+  created_at       DateTime @default(now())
+  updated_at       DateTime @updatedAt
+  Logs             Logs[]
 }
 
 model Role {
-  id         Int     @default(autoincrement()) @id @unique 
-  role       Boolean  
-  usuario    Usuario[]
+  id      Int       @id @unique @default(autoincrement())
+  role    Boolean
+  usuario Usuario[]
 }
 
 model Usuario {
@@ -44,7 +46,31 @@ model Usuario {
   nome       String
   email      String   @unique
   senha      String
-  role       Role      @relation(fields: [isAdmin], references: [id])
+  role       Role     @relation(fields: [isAdmin], references: [id])
   isAdmin    Int
   created_at DateTime @default(now())
+  Logs       Logs[]
+}
+
+model CamposAlterados {
+  id         Int      @id @unique @default(autoincrement())
+  campo      String
+  created_at DateTime @default(now())
+  Logs       Logs[]
+}
+
+model Logs {
+  id              Int              @id @unique @default(autoincrement())
+  Usuario         Usuario?         @relation(fields: [usuarioid], references: [id])  
+  usuarioid       Int
+  ProdutosPrecos  ProdutosPrecos?  @relation(fields: [codigoprecos], references: [codigo])
+  codigoprecos    Int
+  Produto         Produto?         @relation(fields: [produtoid], references: [produto1])
+  produtoid       String
+  CamposAlterados CamposAlterados? @relation(fields: [campoalterado], references: [id])
+  campoalterado   Int
+  valororiginal   Float
+  valornovo       Float
+  created_at      DateTime         @default(now())
+  updated_at      DateTime         @updatedAt
 }
