@@ -6,6 +6,7 @@ import { Prisma, Usuario } from "@prisma/client";
 import * as bcrypt from "bcrypt";
 import { JwtPayload } from "src/auth/models/jwt.strategy";
 import { Role } from "src/auth/models/role.enum";
+import logger from "src/logger";
 
 @Injectable()
 export class UsuarioService {
@@ -19,7 +20,7 @@ export class UsuarioService {
       createdUser.senha = undefined;
       return createdUser;
     } catch (error) {
-      console.log(error);
+      logger.error(`Erro encontrado: Email escolhido ja esta em uso.`);
       throw new HttpException("Email já em uso.", HttpStatus.BAD_REQUEST);
     }
   }
