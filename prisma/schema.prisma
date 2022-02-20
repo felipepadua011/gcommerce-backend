@@ -8,29 +8,29 @@ datasource db {
 }
 
 model Produto {
-  id             Int              @id @unique @default(autoincrement())
-  produto1       String           @unique
+  id             Int             @id @unique @default(autoincrement())
+  produto1       String          @unique
   nome           String
   descricao      String
   colecao        String
   grife          String
   disponivel     Int
-  created_at     DateTime         @default(now())
-  updated_at     DateTime         @updatedAt
-  ProdutosPrecos ProdutosPrecos[]
+  created_at     DateTime        @default(now())
+  updated_at     DateTime        @updatedAt
+  ProdutosPrecos ProdutosPrecos?
 }
 
 model ProdutosPrecos {
   id               Int      @id @unique @default(autoincrement())
-  codigo           Int     
+  codigo           Int
   produtoid        String   @unique
-  Produto          Produto? @relation(fields: [produtoid], references: [produto1])
-  preco1           Float    
+  preco1           Float
   limitedesconto   Int
   promocaodesconto Int
   precoliquido1    Float
   created_at       DateTime @default(now())
   updated_at       DateTime @updatedAt
+  Produto          Produto  @relation(fields: [produtoid], references: [produto1])
 }
 
 model Role {
@@ -44,8 +44,17 @@ model Usuario {
   nome       String
   email      String   @unique
   senha      String
-  role       Role     @relation(fields: [isAdmin], references: [id])
   isAdmin    Int
   created_at DateTime @default(now())
+  role       Role     @relation(fields: [isAdmin], references: [id])
 }
 
+model Log {
+  id            Int      @id @unique @default(autoincrement())
+  idUser        String
+  idProduto     String  
+  campoAlterado String
+  valorOriginal String
+  valorAlterado String
+  created_at    DateTime @default(now())
+}
