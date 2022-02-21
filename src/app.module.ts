@@ -7,8 +7,8 @@ import { ProdutoModule } from "./produto/produto.module";
 import { AuthModule } from "./auth/auth.module";
 import { ProdutosprecosModule } from "./produtosprecos/produtosprecos.module";
 import { RoleModule } from './role/role.module';
-// import { LogsModule } from './logs/logs.module';
-// import { CamposModule } from './campos/campos.module';
+import { LogModule } from "./log/log.module";
+
 
 @Module({
   imports: [
@@ -18,8 +18,8 @@ import { RoleModule } from './role/role.module';
     AuthModule,
     ProdutosprecosModule,
     RoleModule,
-    // LogsModule,
-    // CamposModule,
+    LogModule,
+    
   ],
   controllers: [AppController],
   providers: [AppService],

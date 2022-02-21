@@ -8,7 +8,10 @@ import {
   import { LogService } from "./log.service"; 
   import { AuthGuard } from "@nestjs/passport";
   import { CreateLogDto} from "./dto/create-log.dto";
+import { ApiTags } from "@nestjs/swagger";
 
+
+@ApiTags("Logs")
 @Controller('log')
 export class LogController {
     constructor(private readonly logService: LogService) {}
