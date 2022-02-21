@@ -9,6 +9,7 @@ import { ProdutosprecosModule } from "./produtosprecos/produtosprecos.module";
 import { RoleModule } from './role/role.module';
 import { LogModule } from "./log/log.module";
 
+
 @Module({
   imports: [
     UsuarioModule,
@@ -19,3 +20,8 @@ import { LogModule } from "./log/log.module";
     RoleModule,
     LogModule,
     
+  ],
+  controllers: [AppController],
+  providers: [AppService],
+})
+export class AppModule {}
