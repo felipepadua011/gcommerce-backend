@@ -48,19 +48,6 @@ CREATE TABLE "Usuario" (
     CONSTRAINT "Usuario_pkey" PRIMARY KEY ("id")
 );
 
--- CreateTable
-CREATE TABLE "Log" (
-    "id" SERIAL NOT NULL,
-    "idUser" TEXT NOT NULL,
-    "idProduto" TEXT NOT NULL,
-    "campoAlterado" TEXT NOT NULL,
-    "valorOriginal" TEXT NOT NULL,
-    "valorAlterado" TEXT NOT NULL,
-    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    CONSTRAINT "Log_pkey" PRIMARY KEY ("id")
-);
-
 -- CreateIndex
 CREATE UNIQUE INDEX "Produto_id_key" ON "Produto"("id");
 
@@ -71,9 +58,6 @@ CREATE UNIQUE INDEX "Produto_produto1_key" ON "Produto"("produto1");
 CREATE UNIQUE INDEX "ProdutosPrecos_id_key" ON "ProdutosPrecos"("id");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "ProdutosPrecos_produtoid_key" ON "ProdutosPrecos"("produtoid");
-
--- CreateIndex
 CREATE UNIQUE INDEX "Role_id_key" ON "Role"("id");
 
 -- CreateIndex
@@ -81,9 +65,6 @@ CREATE UNIQUE INDEX "Usuario_id_key" ON "Usuario"("id");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Usuario_email_key" ON "Usuario"("email");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Log_id_key" ON "Log"("id");
 
 -- AddForeignKey
 ALTER TABLE "ProdutosPrecos" ADD CONSTRAINT "ProdutosPrecos_produtoid_fkey" FOREIGN KEY ("produtoid") REFERENCES "Produto"("produto1") ON DELETE RESTRICT ON UPDATE CASCADE;

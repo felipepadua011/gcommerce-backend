@@ -52,7 +52,7 @@ model Usuario {
 model Log {
   id            Int      @id @unique @default(autoincrement())
   idUser        String
-  idProduto     String
+  idProduto     String  
   campoAlterado String
   valorOriginal String
   valorAlterado String
