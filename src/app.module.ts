@@ -7,6 +7,7 @@ import { ProdutoModule } from "./produto/produto.module";
 import { AuthModule } from "./auth/auth.module";
 import { ProdutosprecosModule } from "./produtosprecos/produtosprecos.module";
 import { RoleModule } from './role/role.module';
+import { LogModule } from "./log/log.module";
 // import { LogsModule } from './logs/logs.module';
 // import { CamposModule } from './campos/campos.module';
 
@@ -18,6 +19,7 @@ import { RoleModule } from './role/role.module';
     AuthModule,
     ProdutosprecosModule,
     RoleModule,
+    LogModule,
     // LogsModule,
     // CamposModule,
   ],
